@@ -56,3 +56,29 @@ h1 + h2 {           /*h1과 h2가 자매여야함. h2바로 아랫자매가 h3*/
 h1 ~ h3 {           /* h1과 h3가 자매여야함. h1 아랫자매 모든 h3에 적용*/
     background-color: greenyellow;
 }
+
+[type = "text"] {           /* type 속성의 값이 text인 요소에 적용 */
+    background-color: lavender;
+}
+
+/* li  홀수번째 자매 중 li인 애들 적용*/
+li:nth-child(2n-1) {
+    font-size: 40px;
+}
+/* 홀수 : odd, 2n-1*/
+li:nth-child(odd) {
+    font-size: 8px;
+}
+/* 짝수 even, 2n */
+li:nth-child(even) {
+    font-weight: 200px;
+}
+
+/* Honey Tip */
+body > ul:nth-child(21) > ul:nth-child(4) {
+    font-size: 200px;
+}
+
+body > ul:nth-child(25) > li.japan {
+    font-size: 100px;
+}
