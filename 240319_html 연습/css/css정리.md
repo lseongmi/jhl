@@ -11,8 +11,8 @@
 ```
 
 # 🦄선택자
-```
-*           : 모든 것
+
+`*`           : 모든 것
 TAG         : HTML TAG
 .class      : class 속성
 #id         : id 속성
@@ -26,12 +26,12 @@ TAG         : HTML TAG
 
 [속성 = "값"]       : <TAG 속성 = "값"></TAG>
 
-선택자:first-chlid()    : 첫째 자식
+선택자:first-chlid    : 첫째 자식
 선택자:nth-chlid(N)     : N번째 자식
-선택자:last-chlid()     : 막내자식
+선택자:last-chlid     : 막내자식
 
 선택자:hover          : 마우스 올리면 선택되는 선택자
-```
+
 
 # 🦄우선순위
 1. !important
