@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=Inter:wght@500&display=swap');
 
-/* css Variables */
+/* css Variables - 많이 쓰는 값은 고정된 값으로 하기위해 변수를 사용한다 */
 :root {
     /* color */
     /* hsl을 쓰는 것을 선호하자 같은 색상과 채도를 유지하고 일관되지만 변화를 살짝 줄 수 있음.  */
@@ -20,4 +20,7 @@
 
     /* z-index */
     --z-index: 100;
+
+    /* nav */
+    --nav-height: 44px;
 }
