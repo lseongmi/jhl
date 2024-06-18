@@ -7,6 +7,7 @@
     flex-direction: column;
     align-items: center;
 }
+
 .search-container {
     background-color: #dcdcdc;
     padding: 10px 20px;
@@ -16,20 +17,20 @@
     min-width: 400px;
     width: 80%;
     max-width: 700px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
- 
+
 #search-bar {
     font-size: var(--h2-font-size);
     background: none;   /* 입력창 배경 사라져 */
     border: none;       /* 입력창 외곽선 사라져 */
-    flex-grow: 1;        /* 나를 감싼 container에 여유공간 생기면, 나를 늘려라 */
+    flex-grow: 1;       /* 나를 감싼 container에 여유공간 생기면, 나를 늘려라 */
 }
 
 #search-bar:focus {
     outline: none;      /* 입력창 focus 시, 외곽선 사라져 */
 }
-
+    
 .search-container > i {
     font-size: var(--h2-font-size);
     margin-top: 4px;
@@ -41,7 +42,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
-    /* justify-content: center; */
     justify-content: space-between;
 }
 
@@ -52,14 +52,14 @@
     background-color: #ededed;
     padding: 30px;
     border-radius: 40px;
-    position: relative; /* 내 자손 중 position: absolute;인 아이의 기준이 화면 전체가 아니라 내가 된다 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative; /* 내 자손 중 position:absolute; 인 아이의 기준이 화면 전체가 아니라 내가 된다 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .product-image {
     height: 200px;
-    aspect-ratio: 1/1; /* 이미지 너비(앞)/이미지 높이(위) 비율 */
-    object-fit: contain; /* cover : 공간에 맞게 확대, 잘림 contain : 공간에 맞게 축소, 여백생김*/
+    aspect-ratio: 1/1; /* 이미지 너비(앞) / 이미지 높이(위) 비율 */
+    object-fit: contain;  /* cover : 공간에 맞게 확대, 짤림; contain : 공간에 맞게 축소, 여백 생김 */
     border-radius: 10px;
     background-color: white;
 }
@@ -71,15 +71,18 @@
     border-radius: 19px;
     position: absolute;
     bottom: -19px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
+/* tablet */
 @media screen and (max-width:976px) {
     #school-market {
-        margin-top: calc(var(--nav-height) + 30px);
+        margin-top: calc(var(--nav-height) + 50px);
     }
 }
-@media screen and (max-width:800px) {
+
+/* mobile */
+@media screen and (max-width:800px){
     .product-container {
         justify-content: center;
     }

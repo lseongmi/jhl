@@ -38,6 +38,7 @@ body>header {
     top: 0px;
     right: 0px;
     left: 0px;
+    z-index: 10;
 }
 
 nav.container {
@@ -65,6 +66,7 @@ nav a {
     /* 열 사이의 간격 */
     column-gap: 40px;
     transition: 0.4s ease-in-out;   /* 애니메이션 */
+    backdrop-filter: blur(4px);     /* 배경 흐리게 */
 }
 
 .nav-toggle {
@@ -106,6 +108,7 @@ nav a {
     .nav-toggle {
         display: block; /* 햄버거 메뉴가 보일 수 있게 함 */
         cursor: pointer;    /* 마읏 포인터 */
+        margin-top: 6px;
     }
 
     .show-menu {
