@@ -34,7 +34,7 @@ body {
 
 body>header {
     /* 절댓값 */
-    position: absolute;
+    position: fixed;
     top: 0px;
     right: 0px;
     left: 0px;
