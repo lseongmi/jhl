@@ -36,7 +36,7 @@ body>header {
     /* 절댓값 */
     position: fixed;
     top: 0px;
-    right: 0px;
+    right: 0px; 
     left: 0px;
     z-index: 10;
 }
