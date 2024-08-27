@@ -1,0 +1,37 @@
+.container {
+    display: grid;
+    /* 열에 관한 틀 */
+    /* grid-template-columns: 1fr 1fr; */
+    /* grid-template-columns: repeat(2, 1fr); */
+    grid-template-columns: 30% 70%;
+    /* grid-template-columns: repeat(2, 50%); */
+    grid-template-rows: 4fr 6fr;
+    width: 800px;
+    height: 400px;
+}
+
+.item {
+    /* border: 1px solid hotpink; */
+    /* text-align: center; 수명만 가운데로*/
+
+
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    display: grid;
+    place-items: center; /* 수평, 수직 다 정렬 */
+
+}
+
+.item:first-child {
+    background-color: hotpink;
+}
+.item:nth-child(2) {
+    background-color: deepskyblue;
+}
+.item:nth-child(3) {
+    background-color: peru;
+}
+.item:last-child {
+    background-color: whitesmoke;
+}
