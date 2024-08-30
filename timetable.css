@@ -1,0 +1,76 @@
+.container {
+    width: 800px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: 100px repeat(5,1fr)/*1fr 1fr 1fr 1fr 1fr*/;
+}
+
+.item {
+    border: 1px solid gray;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    display: grid;          /* 글자 수평, 수직 가운데로 */
+    place-items: center;    /* 글자 수평, 수직 가운데로 */
+}
+.week_name {
+    background-color: hotpink;
+    color: white;
+}
+
+
+/* .item:nth-child(6n+1) {
+    color: hotpink;
+} */
+
+.class {
+    color: hotpink;
+}
+.item:first-child {
+    color: white;
+}
+
+.two {
+    
+    grid-row-start: 4;
+    grid-row-end: 6;
+    grid-column-start: 3;
+}
+.wsm {
+    grid-row-start: span 2;
+    grid-row-end: 9;
+    grid-column-start: 3;
+}
+.java {
+    grid-row-start: 3;
+    grid-row-end: 5;
+    grid-column-start: 4;
+}
+.ca {
+    /* grid-row: 7/9;
+    grid-column-start: 4; */
+    grid-area: 7/4/span 2/5;
+}
+.coding {
+    /* grid-row: 4/6;
+    grid-column-start: 5; */
+    grid-area: 4/5/6/6;
+}
+.python {
+    /* grid-row: 6/8;
+    grid-column-start: 5; */
+    grid-area: 6/5/span 2/6;
+}
+.wsmtwo {
+    grid-area: 4/6/span 2/7;
+    /* grid-row: 4/6;
+    grid-column: 6; */
+}
+.js {
+    grid-area: 6/6/span 2/7;
+    /* grid-row:6/8;
+    grid-column: 6; */
+}
+
+
+
