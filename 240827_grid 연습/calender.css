@@ -1,0 +1,43 @@
+#calender {
+    width: 600px;
+    margin: 0 auto;
+}
+
+#calender-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+}
+
+#prev-month,
+#next-month {
+    border: none;
+    background-color: transparent;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+#calender-container {
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid #555;
+}
+.item {
+    display: grid;
+    place-items: center;
+}
+/* 이번달만 pointer로 원함. .item이면서 .other-date가 없는 아이 */
+.item:not(.other-date,.weekname) {
+    cursor: pointer;
+}
+
+.weekname {
+    color: #AAA;
+    border-bottom: 1.4px solid #555;
+    font-weight: bold;
+}
+.other-date {
+    color: #ddd;
+}
