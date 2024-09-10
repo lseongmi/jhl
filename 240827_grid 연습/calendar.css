@@ -1,9 +1,9 @@
-#calender {
+#calendar {
     width: 600px;
     margin: 0 auto;
 }
 
-#calender-header {
+#calendar-headar {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,7 @@
     cursor: pointer;
 }
 
-#calender-container {
+#calendar-container {
     height: 400px;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
