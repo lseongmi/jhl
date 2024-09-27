@@ -92,9 +92,9 @@ const setCalendar = (date) => {
     //다음 달 앞날짜 구하자
     //1~? : ? = 6-x 이번달 마지막 날짜의 요일
     for (let date = 1; date <= (6 - lastDay); date++) {
-        let currentMonthDateDiv = document.createElement("div"); //<div></div>
-        currentMonthDateDiv.className = "item other-month"; //<div class = "item other-month"></div>
-        currentMonthDateDiv.textContent = date; //div class = "item">1</div>
+        let prevMonthLastDateDiv = document.createElement("div"); //<div></div>
+        prevMonthLastDateDiv.className = "item other-month"; //<div class = "item other-month"></div>
+        prevMonthLastDateDiv.textContent = date; //div class = "item">1</div>
         calendarContainerDiv.appendChild(currentMonthDateDiv); //<div id = "calendar-container"><div class = "item">1</div></div>   
     }
 }
