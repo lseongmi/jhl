@@ -83,10 +83,10 @@ const setCalendar = (date) => {
     // calendarContainerDiv.innerHTML += dateString;
     //div 요소 만들자, class에 item 넣자, text에 날짜 넣자. calendarContainerDiv에 자식으로 붙이자
     for (let date = 1; date <= lastDate.getDate(); date++) {
-        let currentMonthDateDiv = document.createElement("div"); //<div></div>
-        currentMonthDateDiv.className = "item"; //<div class = "item"></div>
-        currentMonthDateDiv.textContent = date; //div class = "item">1</div>
-        calendarContainerDiv.appendChild(currentMonthDateDiv); //<div id = "calendar-container"><div class = "item">1</div></div>   
+        let nextMonthDateDiv = document.createElement("div"); //<div></div>
+        nextMonthDateDiv.className = "item"; //<div class = "item"></div>
+        nextMonthDateDiv.textContent = date; //div class = "item">1</div>
+        calendarContainerDiv.appendChild(nextMonthDateDiv); //<div id = "calendar-container"><div class = "item">1</div></div>   
     }
     
     //다음 달 앞날짜 구하자
@@ -95,7 +95,7 @@ const setCalendar = (date) => {
         let prevMonthLastDateDiv = document.createElement("div"); //<div></div>
         prevMonthLastDateDiv.className = "item other-month"; //<div class = "item other-month"></div>
         prevMonthLastDateDiv.textContent = date; //div class = "item">1</div>
-        calendarContainerDiv.appendChild(currentMonthDateDiv); //<div id = "calendar-container"><div class = "item">1</div></div>   
+        calendarContainerDiv.appendChild(prevMonthLastDateDiv); //<div id = "calendar-container"><div class = "item">1</div></div>   
     }
 }
 
