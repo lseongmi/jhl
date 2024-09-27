@@ -31,13 +31,16 @@ prevMonthButton.addEventListener('click', () => changeMonth(-1)) //addEventListn
 const nextMonthButton = document.querySelector("#next-month");
 nextMonthButton.onclick = () => changeMonth(1); //변수처럼 사용되기 때문에 하나만 작동함
 
-//일 구하자
+//달력 표시하자(요일, 날짜)
 const setCalendar = (date) => {
     const year = date.getFullYear();
     const month = date.getMonth();
     //첫 날의 요일 구하자:이전달 뒷 날짜 쓰기 위하여
     const firstDay = new Date(year, month, 1).getDay(); //0:일요일 6:토요일
     
+    //이전달 마지막날짜 구하자
+    const prevMonthLastDate = new Date(year, month, 0);
+
     //마지막 날짜 구하자:요일 구하기 위하여
     const lastDate = new Date(year, month + 1, 0); //실제 마지막 날짜만 구하려면 lastDate.getDate()
      
@@ -64,7 +67,12 @@ const setCalendar = (date) => {
     
     //이전 달 뒷날짜 구하자
     //0~이번달 1일의 요일 -1까지 이전달 마지막 날짜 - 이번달 1일의 요일 + 1(시작날짜)부터 +1해서 쓰자.
-    
+    for (let date = prevMonthLastDate.getDate() - firstDay + 1; date <= prevMonthLastDate.getDate(); date++) {
+        let currentMonthDateDiv = document.createElement("div"); //<div></div>
+        currentMonthDateDiv.className = "item other-month"; //<div class = "item other-month"></div>
+        currentMonthDateDiv.textContent = date; //div class = "item">1</div>
+        calendarContainerDiv.appendChild(currentMonthDateDiv); //<div id = "calendar-container"><div class = "item">1</div></div>   
+    }
 
     
     //이번달 날짜들 쓰자 1~30 : 1 ~lastDate.getDate()
@@ -82,8 +90,13 @@ const setCalendar = (date) => {
     }
     
     //다음 달 앞날짜 구하자
-    //이번달 마지막 날의 요일 + 1 / 2~6까지 1부터 차례대로 날짜 쓰자
-
+    //1~? : ? = 6-x 이번달 마지막 날짜의 요일
+    for (let date = 1; date <= (6 - lastDay); date++) {
+        let currentMonthDateDiv = document.createElement("div"); //<div></div>
+        currentMonthDateDiv.className = "item other-month"; //<div class = "item other-month"></div>
+        currentMonthDateDiv.textContent = date; //div class = "item">1</div>
+        calendarContainerDiv.appendChild(currentMonthDateDiv); //<div id = "calendar-container"><div class = "item">1</div></div>   
+    }
 }
 
 
