@@ -41,3 +41,27 @@ main {
     max-width: 600px; */
     width: min(100% 600px);
 }
+
+#calendar {
+    display: none;
+}
+#selection-washingmachine-time {
+    margin-top: 100px;
+}
+.flex-container {
+    display: flex;
+    column-gap: 20px;
+}
+#dormitory select {
+    font-size: var(--h2-font-size);
+    border: none;
+    background-color: #f0f0f0;
+    border-radius: 25px;
+    padding: 15px 20px;
+}
+.btn {
+    font-size: var(--h2-font-size);
+    padding: 10px 20px;
+    margin-top: 40px;
+    float: right;
+}
