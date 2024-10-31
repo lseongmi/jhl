@@ -3,117 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dormitory</title>
-</head>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School Market Dormitory</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/calendar.css">
     <link rel="stylesheet" href="css/dormitory.css">
-    <link rel="shortcut icon" type="image/x-icon" href="images/미림.webp">
+    <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
     <header>
-        <!-- nav.nav.container{네비게이션 바} -->
         <nav class="nav container">
             <!-- 로고 -->
-            <a href="index.html" class="nav-logo">
+            <a href="/" class="nav-logo">
                 <i class="bi bi-shop"></i>
             </a>
-
             <!-- 학교, 매점, 기숙사 -->
-            <ul class="nav-list container">
+            <ul class="nav-list">
+            
                 <!-- 학교 -->
-                <li class="nav-item"><a href="index.html" class="nav-link">급식</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">급식</a></li>
                 <!-- 매점 -->
-                <li class="nav-item"><a href="school-market.html" class="nav-link">매점</a></li>
-                <!-- 기숙사 -->
-                <li class="nav-item"><a href="dormitory.html" class="nav-link">기숙사</a></li>
+                    <li class="nav-item"><a href="school-market.html" class="nav-link">매점</a></li>
+                <!-- <!— 기숙사 —> -->
+                    <li class="nav-item"><a href="dormitory.html" class="nav-link">기숙사</a></li>
             </ul>
 
-            <!-- 햄버거 메뉴 or 닫기 버튼 -->
-            <div class="nav-toggle" id="nav-toggle">
-                <i class="bi bi-list"></i>
-            </div>
+            <!-- 햄버거 메뉴 or 닫기 버튼  -->
+                <div class="nav-toggle" id="nav-toggle">
+                    <i class="bi bi-list"></i>
+                </div>
         </nav>
+
+        <!-- <!— <nav class="nav container">네비게이션바</nav> —> -->
+
     </header>
 
     <main id="dormitory">
         <h1>세탁기 예약하기</h1>
 
-
         <div id="selection-container">
-            <div class="selection-item" onclick="setPage(1)">요일 지정</div>
+            <div class="selection-item"  onclick="setPage(1)">요일 지정</div>
             <div class="selection-item" onclick="setPage(2)">시간 선택</div>
             <div class="selection-item" onclick="setPage(3)">호실 이름</div>
         </div>
 
-
-        <!-- 요일지정 -->
+        <!-- 요일 지정 -->
         <div id="calendar">
             <div id="calendar-header">
                 <button id="prev-month">🌜</button>
                 <h1></h1>
                 <button id="next-month">🌛</button>
             </div>
-            <div id="calendar-container"></div>
+            <div id="calendar-container">
+            </div>
         </div>
 
-        <!-- 시간선택 -->
+        <!-- 시간 선택 -->
         <div id="selection-washingmachine-time">
             <div class="flex-container">
                 <select name="washingmachine" id="washingmachine">
-                    <!-- option[value="$"]{$번 세탁기} -->
                     <option value="1">1번 세탁기</option>
                     <option value="2">2번 세탁기</option>
                     <option value="3">3번 세탁기</option>
                 </select>
-
                 <select name="time" id="time">
                     <option value="1">7시 ~ 8시 10분</option>
                     <option value="2">8시 10분 ~ 9시 20분</option>
-                    <option value="3">9시 20분 ~ 10시 30부</option>
+                    <option value="3">9시 20분 ~ 10시 30분</option>
                 </select>
             </div>
-            <!-- button.btn{다음} -->
+
             <button class="btn">다음</button>
-        
         </div>
-
-
-        <!-- 호실이름 -->
-         <div id="selection-room-name">
+        
+        <!-- 호실 이름 -->
+        <div id="selection-room-name">
             <div class="flex-container">
                 <select name="room" id="room">
-                    <!-- option[value="$@401"]{$@401호}*5 -->
-                     <option value="">호실</option>
+                    <option value="room">호실</option>
                     <option value="401">401호</option>
                     <option value="402">402호</option>
                     <option value="403">403호</option>
                     <option value="404">404호</option>
                     <option value="405">405호</option>
                 </select>
-
-                <input type="text" id="name" name="name" placeholder="이름을 적어주세요">
+                <input id="name" placeholder="이름을 적어주세요">
             </div>
-            <button class="btn">다음</button>
-         </div>
 
-         <!-- 세탁기 예약 현황표 -->
+            <button class="btn">다음</button>
+        </div>
+
+        <!-- 세탁기 예약 현황표 -->
         <div id="board">
             <div class="board-container">
                 <div class="item header">이름</div>
                 <div class="item header">호실</div>
+                <div class="item header">날짜</div>
                 <div class="item header">시간</div>
                 <div class="item header">세탁기</div>
-                <div class="item header">알림</div>
-
+                <div class="item header">알림받기</div>
                 <div class="item">김서연</div>
                 <div class="item">501호</div>
+                <div class="item">10-29(화)</div>
                 <div class="item">9시 20분 ~ 10시 30분</div>
                 <div class="item">3번</div>
                 <div class="item">🔔</div>
@@ -158,20 +150,12 @@
                 <div class="item"></div>
                 <div class="item"></div>
             </div>
-
             <button class="btn">예약완료</button>
         </div>
     </main>
 
-    
-
-
-
-
-    
-    <script src="./js/nav.js"></script>
-    <script src="./js/dormitory.js"></script>
-    <script src="./js/calendar.js"></script>
-    
+    <script src="js/nav.js"></script>
+    <script src="js/dormitory.js"></script>
+    <script src="js/calendar.js"></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 main {
-    margin-top: calc(var(--nav-height) + 40px);
+    margin-top: calc(var(--nav-height) + 50px);
+    /* calc는 연산자 꼭 띄어쓰기가 필요함 */
 }
 
 #dormitory {
@@ -15,7 +16,7 @@ main {
 #dormitory #selection-container {
     font-size: var(--h2-font-size);
     display: flex;
-    background-color: #a0d49c;
+    background-color: #A0d49c;
     border-radius: 40px;
     padding: 5px 10px;
     column-gap: 30px;
@@ -24,13 +25,12 @@ main {
 
 .selection-item {
     padding: 5px 15px;
-
 }
 
 .select-menu,
 .selection-item:hover {
     cursor: pointer;
-    background-color: #fff;
+    background-color: white;
     border-radius: 40px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 25%);
 }
@@ -38,25 +38,28 @@ main {
 #calendar {
     margin-top: 20px;
     /* width: 100%;
-    max-width: 600px; */
-    width: min(100% 600px);
+    max-width: 900px; */
+    width: min(100%, 600px); /* 600px보다 크면, 600px, 작으면 100%*/
 }
+
 
 #calendar,
 #selection-washingmachine-time,
-#selection-room-name,
-#board{
+#selection-room-name {
     display: none;
 }
-#selection-washingmachine-time,
+
+#selection-washingmachine-time ,
 #selection-room-name,
-#board{
+#board {
     margin-top: 100px;
 }
+
 .flex-container {
     display: flex;
     column-gap: 20px;
 }
+
 #dormitory select,
 #dormitory input {
     font-size: var(--h2-font-size);
@@ -65,6 +68,7 @@ main {
     border-radius: 25px;
     padding: 15px 20px;
 }
+
 .btn {
     font-size: var(--h2-font-size);
     padding: 10px 20px;
@@ -72,10 +76,9 @@ main {
     float: right;
 }
 
-.board-container{
+.board-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
-    gap: 1px;
+    grid-template-columns: 1fr 1fr 2fr 2fr 1fr 1fr;
 }
 
 #board .header {
