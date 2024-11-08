@@ -68,6 +68,10 @@ const setPage = (page) => {
         
     }
     else if(page === 3) {   //호실 이름
+        //세탁기 번호, 시간 보관하자
+        newReservation.washingmachine = washingmachineSelect.value; //세탁기 option들에서 사용자가 선택한 세탁기와 value속성값을 가져오자
+        newReservation.time = timeSelect.value;
+        // initRoomName();
 
     }
     else if(page === 4) {   //세탁기 예약 현황표
@@ -105,35 +109,42 @@ const initWashingmachineTime = () => {
     let allWashingmachineTime = {};
     let washingmachines;    //세탁기 번호 모음
 
-    //기숙사에 있는 모든 세탁기, 시간 정보 가져오자
-    console.log(allData);
-    console.log(allData.washingmachine); //1,2,3
-    console.log(Object.keys(allData.time)); //["1", "2", "3"]
-
-
-    //미리 예약된 정보 가져오자
-    console.log(weeklyReservations);
-
     //초기 데이터 세팅하자 : {"1" : ["1", "2", "3"], "2" : ["1", "2", "3"], "3" : ["1", "2", "3"]}
     //allData.washingmachine 에서 하나씩 꺼내자 => washingmachine
     allData.washingmachine.forEach((washingmachine) => {
         allWashingmachineTime[washingmachine] = Object.keys(allData.time); //awt["1"] = ["1", "2", "3"] => awt = {"1" : ["1", "2", "3"]}
     });
-    console.log(allWashingmachineTime);
 
     //선택한 날짜의 요일 구하자
+    let weekday = newReservation.date.getDay();
 
-    //그 요일의 미리 예약된 세탁기와 시간 파악하자
+    //To Do :그 요일의 미리 예약된 세탁기와 시간 파악하자
 
     //예약된게 있으면 select 목록에서 빼자
+    weeklyReservations.forEach((weeklyReservation) => {
+        if(weeklyReservation.weekday === weekday) {
+            const { washingmachine, time } = weeklyReservation;
+            // const washingmachine = getWeeklyReservation.washingmachine;
+            // const time = getWeeklyReservation;
+
+            const index = allWashingmachineTime[washingmachine].indexOf(String(time));  //1 -> "1"
+            if(index > -1) {    //예약된 시간 찾았다면
+                allWashingmachineTime[washingmachine].splice(index, 1); //그 시간 빼자
+            }
+        }
+    });
 
     //그 요일의 미리 예약된 세탁기와 시간이 다 차면, 그 세탁기 select 목록에서 빼자
 
-    //사용자가 예약한 내용도 위의 것을 다 파악해서 빼자
 
+
+    
     //select 들 : (세탁기 번호, 시간들) 만들자
-    washingmachines = Object.keys(allWashingmachineTime)
-
+    washingmachineSelect.innerHTML = "";
+    washingmachines = Object.keys(allWashingmachineTime);
+    //예약할 시간이 없으면, 세탁기도 빼자           allWashingmachineTime = {세탁기 번호 : [시간, 시간, 시간]}
+    washingmachines = washingmachines.filter((washingmachine) => allWashingmachineTime[washingmachine].length > 0);
+    
     washingmachines.forEach((washingmachine) => {
         // <option value="1">1번세탁기</option>
         // option 태그 만들자
@@ -151,6 +162,7 @@ const initWashingmachineTime = () => {
 
     const initTime = () => {
         const selectedWashingmachine = washingmachineSelect.value; //선택한 세탁기 option의 value
+        timeSelect.innerHTML = "";  //시간 옵션 없애자
         allWashingmachineTime[selectedWashingmachine].forEach((time) => {
             //<option value = "1">7시 ~ 8시 10분</option>
 
@@ -159,10 +171,15 @@ const initWashingmachineTime = () => {
             newOption.textContent = allData.time[time]; //"2" -> allData.time["2"](8시 10분 ~ 9시 20분).time -> allData.time[time]
 
             timeSelect.appendChild(newOption);
+
         });
     }   
     initTime();
 
+    //세탁기 번호가 바뀌면, 다시 시간을 불러오자
+    washingmachineSelect.onchange = initTime;
+
 
     //3page에 세탁기, 시간 넘기자
+    
 }
