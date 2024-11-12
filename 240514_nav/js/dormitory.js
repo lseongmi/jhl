@@ -13,6 +13,8 @@ const washingmachineSelect = document.getElementById("washingmachine");
 const timeSelect = document.getElementById("time");
 const selectionRoomNameDiv = document.querySelector("#selection-room-name");
 const boardDiv = document.querySelector("#board");
+const roomSelect = document.getElementById("room");
+const nameInput = document.getElementById("name");
 
 // 4개 한번에 다 모으기
 const pageDivs = [calendarDiv, selectionWashingmachineTimeDiv, selectionRoomNameDiv, boardDiv];
@@ -71,10 +73,17 @@ const setPage = (page) => {
         //세탁기 번호, 시간 보관하자
         newReservation.washingmachine = washingmachineSelect.value; //세탁기 option들에서 사용자가 선택한 세탁기와 value속성값을 가져오자
         newReservation.time = timeSelect.value;
-        // initRoomName();
+        initRoomName();
 
     }
     else if(page === 4) {   //세탁기 예약 현황표
+        //호실, 이름 보관하자
+        newReservation.room = roomSelect.value;
+        newReservation.name = nameInput.value;
+
+        console.log(newReservation);
+
+        //initTable();
 
     }
 }
@@ -181,5 +190,23 @@ const initWashingmachineTime = () => {
 
 
     //3page에 세탁기, 시간 넘기자
+    
+}
+
+const initRoomName = () => {
+    //모든 호실 표시하자
+    //allData에서 방 정보 가져와서 <option value="401">401호</option> 만들어서 roomSelectdp 자식으로 붙이자
+    let rooms = allData.room
+    let optionString = "";
+    rooms.forEach((room) => {
+        optionString += `<option value="${room}">${room}호</option>`;
+    });
+    roomSelect.innerHTML = optionString;
+
+
+    //이름 초기화 시키자
+    nameInput.value = "";
+    
+    //4page호실, 이름 넘기자
     
 }
