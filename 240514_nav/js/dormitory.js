@@ -3,6 +3,7 @@ let weeklyReservations;      // 미리 정해진 요일별 예약 데이터
 let newReservation;         //사용자가 새롭게 지금 입력하는 예약정보. 1페이지에서 초기화 하자
 let reservations = [];           //사용자가 에약한 정보들의 덩어리
 
+
 // selection-item 요소 가져오기
 const selectionItemDivs = document.getElementsByClassName("selection-item");
 
@@ -67,7 +68,18 @@ const setPage = (page) => {
     // show pageDiv 1
     pageDivs[page-1].style.display = "block";
 
-    if(page === 2) {        //시간 선택 : 세탁기, 시간
+    if (page === 1) {
+        // /localStorage에 저장한 예약들 가져오자
+        const storedReservations = localStorage.getItem("reservations");
+        if (storedReservations) {
+            reservations = JSON.parse(storedReservations);  //string -> JSON
+            reservations.map((reservations) => reservations.date = new Date(reservations.date))   //.date에 저장된 string -> Date 객체로 바꾸자
+        }
+        else {  //저장된 예약들이 없으면,(아예 예약 완료 버튼 안 눌렀을 때, 처음이란 말)
+            reservations = [];
+        }
+    }
+    else if(page === 2) {        //시간 선택 : 세탁기, 시간
         initWashingmachineTime();
         
         
@@ -131,7 +143,20 @@ const initWashingmachineTime = () => {
     //선택한 날짜의 요일 구하자
     let weekday = newReservation.date.getDay();
 
-    //To Do :그 요일의 미리 예약된 세탁기와 시간 파악하자
+    //그 요일의 미리 예약된 세탁기와 시간 파악해서 빼자
+    reservations.forEach((reservation) => {
+        //사용자가 예약한 날짜와 지금 입력하고 있는 새로운 예약의 날짜가 같으면, 그 세탁기 번호에 그시간 빼자
+        if(reservation.date.getFullYear == newReservation.getFullYear()
+        && reservation.date.getMonth() == newReservation.getMonth()
+        && reservation.date.getDate() == newReservation.getDate()) {
+            const{ washingmachine, time} = reservation
+            const index = allWashingmachineTime(washingmachine).indexOf(STring(time));
+            if(index > -1) {    //예약된 시간 찾았다면
+                allWashingmachineTime[washingmachine].splice(index,1);
+            }
+        }
+    })
+
 
     //예약된게 있으면 select 목록에서 빼자
     weeklyReservations.forEach((weeklyReservation) => {
@@ -235,4 +260,12 @@ const initTable = () => {
         <div class="item">${reservation.notification?"🔔":"🔔❌"}</div>`;
     });
     boardContainerDiv.innerHTML = itemString; //string -> 표에 표시하자
+}
+
+const saveReservations = () => {
+    //원래는 백엔드에 reservations 정보를 넘겨서 데이터베이스에 저장해야함 - 3학년 유병석, 박지우, 신혜정 선생님께 배우세요
+    //그냥 로컬에 기록해둘 것이에요. localStorage라는 친구
+    alert("예약 완료");
+    localStorage.setItem("reservations", JSON.stringify(reservations)); //예약들을 저장하자 JSON -> string
+    
 }
