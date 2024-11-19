@@ -73,7 +73,7 @@ const setPage = (page) => {
         const storedReservations = localStorage.getItem("reservations");
         if (storedReservations) {
             reservations = JSON.parse(storedReservations);  //string -> JSON
-            reservations.map((reservations) => reservations.date = new Date(reservations.date))   //.date에 저장된 string -> Date 객체로 바꾸자
+            reservations.map((reservation) => reservation.date = new Date(reservation.date))   //.date에 저장된 string -> Date 객체로 바꾸자
         }
         else {  //저장된 예약들이 없으면,(아예 예약 완료 버튼 안 눌렀을 때, 처음이란 말)
             reservations = [];
@@ -143,21 +143,6 @@ const initWashingmachineTime = () => {
     //선택한 날짜의 요일 구하자
     let weekday = newReservation.date.getDay();
 
-    //그 요일의 미리 예약된 세탁기와 시간 파악해서 빼자
-    reservations.forEach((reservation) => {
-        //사용자가 예약한 날짜와 지금 입력하고 있는 새로운 예약의 날짜가 같으면, 그 세탁기 번호에 그시간 빼자
-        if(reservation.date.getFullYear == newReservation.getFullYear()
-        && reservation.date.getMonth() == newReservation.getMonth()
-        && reservation.date.getDate() == newReservation.getDate()) {
-            const{ washingmachine, time} = reservation
-            const index = allWashingmachineTime(washingmachine).indexOf(STring(time));
-            if(index > -1) {    //예약된 시간 찾았다면
-                allWashingmachineTime[washingmachine].splice(index,1);
-            }
-        }
-    })
-
-
     //예약된게 있으면 select 목록에서 빼자
     weeklyReservations.forEach((weeklyReservation) => {
         if(weeklyReservation.weekday === weekday) {
@@ -172,7 +157,20 @@ const initWashingmachineTime = () => {
         }
     });
 
-    //그 요일의 미리 예약된 세탁기와 시간이 다 차면, 그 세탁기 select 목록에서 빼자
+    
+    //그 요일의 미리 예약된 세탁기와 시간 파악해서 빼자
+    reservations.forEach((reservation) => {
+        //사용자가 예약한 날짜와 지금 입력하고 있는 새로운 예약의 날짜가 같으면, 그 세탁기 번호에 그시간 빼자
+        if(reservation.date.getFullYear() == newReservation.date.getFullYear()
+        && reservation.date.getMonth() == newReservation.date.getMonth()
+        && reservation.date.getDate() == newReservation.date.getDate()) {
+            const{ washingmachine, time} = reservation;
+            const index = allWashingmachineTime(washingmachine).indexOf(String(time));
+            if(index > -1) {    //예약된 시간 찾았다면
+                allWashingmachineTime[washingmachine].splice(index,1);
+            }
+        }
+    })
 
 
 
